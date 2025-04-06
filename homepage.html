@@ -1,53 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TED-Ed Video Page</title>
+  <meta charset="UTF-8">
+  <title>Current Time</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    iframe {
-      width: 100%;
-      height: 450px;
-      border: none;
-      border-radius: 8px;
+      background-color: #121212;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      flex-direction: column;
     }
     h1 {
-      color: #c4302b;
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
-    p {
-      color: #555;
+    #clock {
+      font-size: 4rem;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Learn Something New - TED-Ed Video</h1>
-    <p>Watch this amazing TED-Ed video and explore fascinating topics in just a few minutes.</p>
+  <h1>Current Time</h1>
+  <div id="clock">--:--:--</div>
 
-    <!-- Embed a TED-Ed YouTube video -->
-    <iframe 
-      src="https://www.youtube.com/embed/5c1iZt7keHE" 
-      title="TED-Ed Video"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
-    
-    <p><em>Video Source: <a href="https://www.youtube.com/user/TEDEducation" target="_blank">TED-Ed on YouTube</a></em></p>
-  </div>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // Initial call
+  </script>
 </body>
 </html>
